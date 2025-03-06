@@ -1,8 +1,10 @@
 import os
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from sentence_transformers import SentenceTransformer, util
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS
 
 # Load chatbot model
 model = SentenceTransformer("all-MiniLM-L6-v2")
@@ -25,4 +27,5 @@ def chatbot():
     return jsonify({"response": best_match})
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+    port = int(os.environ.get("PORT", 5000))  # Get PORT from Render
+    app.run(host="0.0.0.0", port=port)  # Use Render's assigned PORT
