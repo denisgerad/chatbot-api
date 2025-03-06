@@ -1,19 +1,11 @@
-import os
 from flask import Flask, request, jsonify
 from sentence_transformers import SentenceTransformer, util
 
 app = Flask(__name__)
 
-@app.after_request
-def add_cors_headers(response):
-    response.headers["Access-Control-Allow-Origin"] = "*"
-    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
-    response.headers["Access-Control-Allow-Headers"] = "Content-Type"
-    return response
-
 # Load chatbot model
 model = SentenceTransformer("all-MiniLM-L6-v2")
-blog_topics = ["Introduction", "Exploring faith and science", "COSMOS", "The Garden of Eden"]  # Example topics
+blog_topics = ["Introduction", "Exploring faith and science", "COSMOS", "The Garden of Eden"]
 topic_embeddings = model.encode(blog_topics, convert_to_tensor=True)
 
 @app.route("/chatbot", methods=["POST"])
@@ -32,5 +24,5 @@ def chatbot():
     return jsonify({"response": best_match})
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # Get PORT from Render
-    app.run(host="0.0.0.0", port=port)  # Use Render's assigned PORT
+    port = 5000
+    app.run(host="0.0.0.0", port=port)  # No ssl_context needed
