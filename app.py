@@ -3,7 +3,7 @@ from flask_cors import CORS  # Import CORS
 from sentence_transformers import SentenceTransformer, util
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all domains
+CORS(app, resources={r"/chatbot": {"origins": "https://goddesign14b.blogspot.com"}})
 
 # Load chatbot model
 model = SentenceTransformer("all-MiniLM-L6-v2")
