@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS  # Import CORS
 from sentence_transformers import SentenceTransformer, util
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all domains
 
 # Load chatbot model
 model = SentenceTransformer("all-MiniLM-L6-v2")
@@ -25,4 +27,4 @@ def chatbot():
 
 if __name__ == "__main__":
     port = 5000
-    app.run(host="0.0.0.0", port=port)  # No ssl_context needed
+    app.run(host="0.0.0.0", port=port)

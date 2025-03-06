@@ -2,3 +2,4 @@ flask
 sentence-transformers
 torch
 gunicorn
+flask-cors
