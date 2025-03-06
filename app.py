@@ -1,7 +1,23 @@
 from flask import Flask, request, jsonify
 from sentence_transformers import SentenceTransformer, util
+from flask_cors import CORS
 
 app = Flask(__name__)
+
+# Enable CORS for all routes
+CORS(app)
+
+@app.route("/blog-content", methods=["GET"])
+def get_blog_content():
+    try:
+        with open("blog_posts1.txt", "r", encoding="utf-8") as f:
+            content = f.read()
+    except UnicodeDecodeError:
+        with open("blog_posts1.txt", "r", encoding="ISO-8859-1") as f:
+            content = f.read()
+
+    return jsonify({"blogContent": content})
+
 
 def load_blog_topics():
     try:
@@ -30,16 +46,11 @@ if not blog_topics:
 model = SentenceTransformer("all-MiniLM-L6-v2")
 topic_embeddings = model.encode(blog_topics, convert_to_tensor=True)
 
-@app.route('/chatbot', methods=['POST'])
-def chatbot():
+@app.route("/", methods=["POST"])
+def chatbot_response():
     data = request.json
-    user_query = data.get("query", "")
-
-    if not user_query:
-        return jsonify({"error": "Query is empty"}), 400
-
-    if "list topics" in user_query.lower():
-        return jsonify({"topics": blog_topics})
+    user_message = data.get("userMessage", "")
+    return jsonify({"response": f"Received: {user_message}"})
 
     # ✅ Encode user query
     query_embedding = model.encode(user_query, convert_to_tensor=True)
