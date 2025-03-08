@@ -2,9 +2,11 @@ from flask import Flask, request, jsonify
 import json
 import re
 from sentence_transformers import SentenceTransformer, util
+from flask import Flask
 from flask_cors import CORS
 
 app = Flask(__name__)
+# Allow requests from your Blogger site
 CORS(app, resources={r"/chatbot/*": {"origins": "https://goddesign14b.blogspot.com"}})
 
 # Load blog posts
