@@ -1,13 +1,14 @@
 Blog Overview
-The God Design blog has 2 sections: Cosmos and Genetics.
-Click on the side panel and select either topic
-The blog makes a case for a creator to the universe
-The posts are about the science of the universe but make a case for a creator.   
-
+The blog makes a case for a creator
+There are 2 sections: Cosmos and Genetics.
+Cosmos is the journey of science from the medival to present time
+Genetics is the story of the hunt for the gene as a unit of heridity 
+Click on the side panel and from labels you select either topic
 
 COSMOS 
-Introduction to the cosmos and seeing thing from the point of both science and religion
-A look at the three basic questions
+A short introduction to the cosmos 
+Seeing thing from the point of both science and religion
+A look at the three basic questions:
 Where did we come from? 
 Why are we here?  
 Now that we are here, where do we go from here?
@@ -15,56 +16,50 @@ Post number: 1
 
 The Garden of Eden
 This is a beautiful story about consciousness, about responsibility.
-About an omnipotent, omnipresent and ominscient God 
-About the God Design
 Post number: 2
 
 Evolution and Entropy
 The story of Noah and its significance to us in the present day
-Evolution is life and entropy is decay 
 Post number: 3
 
 The Big Bang
-We look at the mystery in the big bang 
-Scientists have not unraveled this mystery
-If not for this intervention there would not have been a universe 
+A quick overview of the the big bang
+There is a mystery in the big bang which you can read 
 Post number: 4
 
 Georges Lemaître - The father of the big bang theory
 Lemaître was a Belgian priest who proposed the Big Bang theory
-It is important that we look at science the same as religion or vice versa
+He taught us that it is important to look at science just ae we look at religion or vice versa
 Post number: 5
 
 The Standard Model of the universe 
 An introduction to the standard model of the universe
-CERN's role in the standard model 
+How the tests at CERN help in refining the standard model 
 Post number: 6
 
 The journey of science
-The many scientists who had an impact on unravelling the universe we live in
 It has been a long journey but a truly beautiful one
-The resilience of scientists to get at the root of creation
+It is the story of resilience to understanding creation
 Post number: 7
 
 Aristotle
-He set the stage for a geocentric universe
-The story of the medival church
+Aristotle set the stage for a geocentric universe
+The story of the medival church and more
 Post number: 8
 
 Coppernicus and Galileo
 Proved that the universe is heliocentric
-Payed the price for it
+Galileo set science on a roller coaster ride
 Post number: 9
 
 Isaac Newton
-The laws are beautiful
-You will read some real world examples 
+The laws of Newon are beautiful
+You will read some real world examples in this post 
 Post number: 10
 
 Albert Einstein
 The greatest scientist to have lived
-The theory of relativity
-How gravity works
+The theory of relativity and understanding gravity
 Post number: 11
 
 Sun
@@ -84,12 +79,13 @@ The effects of dark matter and energy on our universe
 Post number: 14
 
 Quantum Mechanics
-Truly difficult subject and includes consciousness
-A basic explanation
+We are at the door step to understanding the birth of the universe
+And then we have quantum mechanics
+A truly difficult subject and includes consciousness
 Post number: 15
 
 Global Warming
-The story of Earth 
-A request to do your bit for this beautiful planet
+The story of our beautiful blue planet 
+The effect of global warming on our planet 
 Post number: 16
 
