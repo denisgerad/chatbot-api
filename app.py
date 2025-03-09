@@ -5,10 +5,39 @@ import re
 from sentence_transformers import SentenceTransformer, util
 from flask import Flask
 from flask_cors import CORS
+import sqlite3
 
 app = Flask(__name__)
 # Allow requests from your Blogger site
 CORS(app, resources={r"/chatbot/*": {"origins": "https://goddesign14b.blogspot.com"}})
+
+# Initialize database
+def init_db():
+    conn = sqlite3.connect("queries.db")  # SQLite database file
+    cursor = conn.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS user_queries (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            query TEXT NOT NULL
+        )
+    """)
+    conn.commit()
+    conn.close()
+
+# Store user query in the database
+def store_user_query(query):
+    print(f"Storing query: {query}")  # Debugging log
+    try:
+        conn = sqlite3.connect("queries.db")
+        cursor = conn.cursor()
+        cursor.execute("INSERT INTO user_queries (query) VALUES (?)", (query,))
+        conn.commit()
+        conn.close()
+    except Exception as e:
+        print(f"Error storing query: {e}")
+
+# Call init_db() at the start of the app
+init_db()
 
 # Load blog posts
 def load_blog_posts():
