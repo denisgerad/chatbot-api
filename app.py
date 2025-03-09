@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify
 import json
 import re
@@ -58,20 +59,38 @@ try:
 except FileNotFoundError:
     feedback = {}
 
+# Create a file to store queries if it doesn't exist
+if not os.path.exists("user_queries.json"):
+    with open("user_queries.json", "w", encoding="utf-8") as f:
+        json.dump([], f)
+
+# Function to store user queries
+def store_user_query(query):
+    with open("user_queries.json", "r+", encoding="utf-8") as f:
+        queries = json.load(f)
+        queries.append({"query": query})
+        f.seek(0)  # Go to the start of the file
+        json.dump(queries, f, indent=4)
+
 @app.route("/chatbot", methods=["POST"])
 def chatbot():
     data = request.json
     user_query = data.get("query", "").strip().lower()
     
+    # Store the user query
+    store_user_query(user_query)
+    
+    # Response logic
     if user_query in ["hi", "hello"]:
         return jsonify({"response": "Hi, How may I help you?"})
+    
     if user_query in ["thank you", "thanks"]:
         return jsonify({"response": "You're welcome! Let me know if you have any other questions."})
-    
-    if "list topics" in user_query:
+
+    if any(phrase in user_query for phrase in ["list topics", "list of topics", "list post", "list of posts"]):
         return jsonify({"response": "Here are the available topics:\n" + "\n".join(f" - {topic}" for topic in blog_topics)})
     
-    if "overview" in user_query:
+    if "overview" in user_query or "summary" in user_query:
         if "blog" in user_query:
             return jsonify({"response": blog_posts.get("Blog Overview", "No overview available.")})
         else:
