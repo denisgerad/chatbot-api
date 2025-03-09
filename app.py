@@ -3,7 +3,6 @@ from flask import Flask, request, jsonify
 import json
 import re
 from sentence_transformers import SentenceTransformer, util
-from flask import Flask
 from flask_cors import CORS
 import sqlite3
 
@@ -13,16 +12,19 @@ CORS(app, resources={r"/chatbot/*": {"origins": "https://goddesign14b.blogspot.c
 
 # Initialize database
 def init_db():
-    conn = sqlite3.connect("queries.db")  # SQLite database file
-    cursor = conn.cursor()
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS user_queries (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            query TEXT NOT NULL
-        )
-    """)
-    conn.commit()
-    conn.close()
+    try:
+        conn = sqlite3.connect("queries.db")  # SQLite database file
+        cursor = conn.cursor()
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS user_queries (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                query TEXT NOT NULL
+            )
+        """)
+        conn.commit()
+        conn.close()
+    except Exception as e:
+        print(f"Error initializing database: {e}")
 
 # Store user query in the database
 def store_user_query(query):
@@ -34,7 +36,16 @@ def store_user_query(query):
         conn.commit()
         conn.close()
     except Exception as e:
-        print(f"Error storing query: {e}")
+        print(f"Error storing query in database: {e}")
+
+    try:
+        with open("user_queries.json", "r+", encoding="utf-8") as f:
+            queries = json.load(f)
+            queries.append({"query": query})
+            f.seek(0)  # Go to the start of the file
+            json.dump(queries, f, indent=4)
+    except Exception as e:
+        print(f"Error storing query in JSON file: {e}")
 
 # Call init_db() at the start of the app
 init_db()
@@ -92,18 +103,6 @@ except FileNotFoundError:
 if not os.path.exists("user_queries.json"):
     with open("user_queries.json", "w", encoding="utf-8") as f:
         json.dump([], f)
-
-# Function to store user queries
-def store_user_query(query):
-    print(f"Storing query: {query}")  # Add a print statement to check the query
-    try:
-        with open("user_queries.json", "r+", encoding="utf-8") as f:
-            queries = json.load(f)
-            queries.append({"query": query})
-            f.seek(0)  # Go to the start of the file
-            json.dump(queries, f, indent=4)
-    except Exception as e:
-        print(f"Error storing query: {e}")  # Handle potential issues with file access
 
 @app.route("/chatbot", methods=["POST"])
 def chatbot():
