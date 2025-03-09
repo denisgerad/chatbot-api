@@ -5,50 +5,40 @@ import re
 from sentence_transformers import SentenceTransformer, util
 from flask_cors import CORS
 import sqlite3
+import psycopg2
 
 app = Flask(__name__)
 # Allow requests from your Blogger site
 CORS(app, resources={r"/chatbot/*": {"origins": "https://goddesign14b.blogspot.com"}})
 
-# Initialize database
-def init_db():
+# Get database URL from Render environment variable
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://queries_db_user:Gb8Q5E9uj5O8Ep38FWcwSwR03BWqzyzC@dpg-cv6jltogph6c73dnggd0-a.oregon-postgres.render.com/queries_db")
+
+def store_user_query(query):
     try:
-        conn = sqlite3.connect("queries.db")  # SQLite database file
+        # Connect to PostgreSQL
+        conn = psycopg2.connect(DATABASE_URL)
         cursor = conn.cursor()
+
+        # Ensure table exists
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS user_queries (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                query TEXT NOT NULL
+                id SERIAL PRIMARY KEY,
+                query TEXT
             )
         """)
+
+        # Insert query
+        cursor.execute("INSERT INTO user_queries (query) VALUES (%s)", (query,))
         conn.commit()
+
+        cursor.close()
         conn.close()
-    except Exception as e:
-        print(f"Error initializing database: {e}")
+        print("Query successfully saved!")
 
-# Store user query in the database
-def store_user_query(query):
-    print(f"Storing query: {query}")  # Debugging log
-    try:
-        conn = sqlite3.connect("queries.db")
-        cursor = conn.cursor()
-        cursor.execute("INSERT INTO user_queries (query) VALUES (?)", (query,))
-        conn.commit()
-        conn.close()
     except Exception as e:
-        print(f"Error storing query in database: {e}")
+        print(f"Error storing query: {e}")
 
-    try:
-        with open("user_queries.json", "r+", encoding="utf-8") as f:
-            queries = json.load(f)
-            queries.append({"query": query})
-            f.seek(0)  # Go to the start of the file
-            json.dump(queries, f, indent=4)
-    except Exception as e:
-        print(f"Error storing query in JSON file: {e}")
-
-# Call init_db() at the start of the app
-init_db()
 
 # Load blog posts
 def load_blog_posts():
