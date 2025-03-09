@@ -66,11 +66,15 @@ if not os.path.exists("user_queries.json"):
 
 # Function to store user queries
 def store_user_query(query):
-    with open("user_queries.json", "r+", encoding="utf-8") as f:
-        queries = json.load(f)
-        queries.append({"query": query})
-        f.seek(0)  # Go to the start of the file
-        json.dump(queries, f, indent=4)
+    print(f"Storing query: {query}")  # Add a print statement to check the query
+    try:
+        with open("user_queries.json", "r+", encoding="utf-8") as f:
+            queries = json.load(f)
+            queries.append({"query": query})
+            f.seek(0)  # Go to the start of the file
+            json.dump(queries, f, indent=4)
+    except Exception as e:
+        print(f"Error storing query: {e}")  # Handle potential issues with file access
 
 @app.route("/chatbot", methods=["POST"])
 def chatbot():
@@ -102,9 +106,9 @@ def chatbot():
     if "latest post" in user_query:
         return jsonify({"response": f"The latest post is '{latest_post}'."})
     
-    if "recommend" in user_query:
-        return jsonify({"response": "Please check recommendations on the blog."})
-    
+    if any(phrase in user_query for phrase in ["recommend", "best post", "suggest"]):
+       return jsonify({"response": "Please check recommendations on the blog."})
+
     if user_query.startswith("this is incorrect"):
         return jsonify({"response": "Please specify the correct topic."})
     
