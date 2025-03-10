@@ -107,12 +107,12 @@ def chatbot():
         return jsonify({"response": "Hi, How may I help you?"})
     
     if user_query in ["thank you", "thanks"]:
-        return jsonify({"response": "You're welcome! Let me know if you have any other questions."})
+        return jsonify({"response": "You're welcome! If you have any suggestions or comments, please feel free to share."})
 
     if any(phrase in user_query for phrase in ["list topics", "list of topics", "list post", "list of posts"]):
         return jsonify({"response": "Here are the available topics:\n" + "\n".join(f" - {topic}" for topic in blog_topics)})
-    
-    if "overview" in user_query or "summary" in user_query:
+        
+    if "overview" in user_query or "summary" in user_query or "explain" in user_query:
         if "blog" in user_query:
             return jsonify({"response": blog_posts.get("Blog Overview", "No overview available.")})
         else:
@@ -120,6 +120,7 @@ def chatbot():
             if matched_topic:
                 return jsonify({"response": blog_posts.get(matched_topic, "No content found.")})
             return jsonify({"response": "No matching overview found."})
+            
     
     if "latest post" in user_query:
         return jsonify({"response": f"The latest post is '{latest_post}'."})
