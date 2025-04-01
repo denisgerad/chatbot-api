@@ -43,7 +43,7 @@ def load_text_sections(file_path):
     return sections, headers_list
 
 # Load text sections and headers
-file_path = "/home/dennis/ML/nlp/applications/blogger/test/gd.txt"
+file_path = "blog.txt"
 text_sections, headers_list = load_text_sections(file_path)
 
 # Function to process user query
