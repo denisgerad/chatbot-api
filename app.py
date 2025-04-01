@@ -42,9 +42,14 @@ def load_text_sections(file_path):
 
     return sections, headers_list
 
-# Load text sections and headers
-file_path = "blog.txt"
-text_sections, headers_list = load_text_sections(file_path)
+# Load blog posts
+def load_blog_posts():
+    try:
+        with open("blog.txt", "r", encoding="utf-8") as f:
+            content = f.read()
+    except UnicodeDecodeError:
+        with open("blog.txt", "r", encoding="ISO-8859-1") as f:
+            content = f.read()
 
 # Function to process user query
 def process_query(query):
@@ -114,5 +119,5 @@ def chatbot():
     return jsonify({"response": process_query(user_query)})
 
 if __name__ == "__main__":
-    #app.run(host="0.0.0.0", port=5000)
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=5000)
+    #app.run(host="0.0.0.0", port=port)
