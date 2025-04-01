@@ -12,18 +12,26 @@ CORS(app, resources={r"/chatbot/*": {"origins": "https://goddesign14b.blogspot.c
 # Load summarization model (Force CPU to avoid CUDA issues)
 summarizer = pipeline("summarization", model="facebook/bart-large-cnn", device=-1)
 
+# Get the absolute path for the file
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))  
+FILE_PATH = os.path.join(BASE_DIR, "blog.txt")  
+
 # Function to load and split text into sections
-def load_text_sections(file_path):
-    with open(file_path, "r", encoding="utf-8") as f:
-        text = f.read().strip()
+def load_text_sections():
+    try:
+        with open(FILE_PATH, "r", encoding="utf-8") as f:
+            text = f.read().strip()
+    except UnicodeDecodeError:
+        with open(FILE_PATH, "r", encoding="ISO-8859-1") as f:
+            text = f.read().strip()
 
     sections = {}
     current_section = None
     section_content = []
     headers_list = []
 
-    # Regex pattern to detect headers (assuming headers are capitalized)
-    header_pattern = re.compile(r"^[A-Z][A-Za-z\s]+$")
+    # Improved regex to detect headers (Handles numbers, punctuation, etc.)
+    header_pattern = re.compile(r"^[A-Za-z0-9][A-Za-z0-9\s\-\:\.\,\!\?]+$")
 
     for line in text.split("\n"):
         line = line.strip()
@@ -42,14 +50,8 @@ def load_text_sections(file_path):
 
     return sections, headers_list
 
-# Load blog posts
-def load_blog_posts():
-    try:
-        with open("blog.txt", "r", encoding="utf-8") as f:
-            content = f.read()
-    except UnicodeDecodeError:
-        with open("blog.txt", "r", encoding="ISO-8859-1") as f:
-            content = f.read()
+# Load the blog content
+text_sections, headers_list = load_text_sections()
 
 # Function to process user query
 def process_query(query):
