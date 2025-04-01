@@ -10,7 +10,8 @@ app = Flask(__name__)
 CORS(app, resources={r"/chatbot/*": {"origins": "https://goddesign14b.blogspot.com"}})
 
 # Load summarization model (Force CPU to avoid CUDA issues)
-summarizer = pipeline("summarization", model="facebook/bart-large-cnn", device=-1)
+#summarizer = pipeline("summarization", model="facebook/bart-large-cnn", device=-1)
+summarizer = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6", device=-1)
 
 # Get the absolute path for the file
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))  
@@ -121,5 +122,8 @@ def chatbot():
     return jsonify({"response": process_query(user_query)})
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    port = int(os.environ.get("PORT", 5000))  # Important for Render
+
+#if __name__ == "__main__":
+#    app.run(host="0.0.0.0", port=5000)
     #app.run(host="0.0.0.0", port=port)
