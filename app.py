@@ -79,7 +79,8 @@ blog_posts, latest_post = load_blog_posts()
 blog_topics = [topic for topic in blog_posts.keys() if topic != "Blog Overview"]
 
 # Load sentence transformer model
-model = SentenceTransformer("all-MiniLM-L6-v2")
+#model = SentenceTransformer("all-MiniLM-L6-v2")
+model = SentenceTransformer("all-mpnet-base-v2") 
 topic_embeddings = model.encode(blog_topics, convert_to_tensor=True)
 
 # Load user feedback
