@@ -3,6 +3,7 @@ from flask import Flask, request, jsonify
 import json
 import re
 from sentence_transformers import SentenceTransformer, util
+from sentence_transformers import SentenceTransformer
 from flask_cors import CORS
 import sqlite3
 import psycopg2
@@ -80,7 +81,9 @@ blog_topics = [topic for topic in blog_posts.keys() if topic != "Blog Overview"]
 
 # Load sentence transformer model
 #model = SentenceTransformer("all-MiniLM-L6-v2")
-model = SentenceTransformer("all-mpnet-base-v2") 
+model = SentenceTransformer("all-mpnet-base-v2")
+print("Model downloaded successfully!")
+
 topic_embeddings = model.encode(blog_topics, convert_to_tensor=True)
 
 # Load user feedback
