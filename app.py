@@ -144,6 +144,9 @@ def chatbot():
     if any(phrase in user_query for phrase in ["recommend", "best post", "suggest"]):
         return jsonify({"response": "Please check recommendations on the blog."})
 
+    if "what is R2S2" in user_query or "what is r2s2" in user_query or "what is chat with r2s2" in user_query or "what is the meaning of r2s2" in user_query:
+        return jsonify({"response": "Religion too, Science too."})
+
     # Normalize the query to match topics
     matched_topic = None
     for key in topic_lookup:
