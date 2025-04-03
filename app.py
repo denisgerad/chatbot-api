@@ -132,7 +132,7 @@ def chatbot():
     if user_query in ["thank you", "thanks"]:
         return jsonify({"response": "You're welcome! If you have any suggestions or comments, please feel free to share."})
 
-    if "blog overview" in user_query or "overview of blog" in user_query:
+    if "blog overview" in user_query or "overview of blog" in user_query or "overview about blog" in user_query:
         return jsonify({"response": blog_posts.get("Blog Overview", "No overview available.")})
 
     if any(phrase in user_query for phrase in ["list topics", "list of topics", "list post", "list of posts"]):

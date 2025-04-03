@@ -48,22 +48,22 @@ Einstein was born in 1879 in Ulm, Germany. He disliked school, detested memoriza
 Sun
 Our sun is an absolute marvel of creation, creation is laws, laws are mathematical equations and that is how Einstein was able to describe the working of the sun through his famous equation e=mc^2. Everything in our world is made up of atoms and that includes the mighty sun as well. Our sun is a medium sized second or third generation star which means that an earlier bigger star exploded, and our sun was formed from this explosion. The mass of our sun is huge and creates stupendous gravity which pulls the hydrogen atoms to each other.  
 
-Milky way galaxy
+Milky Way Galaxy
 The Milky Way is a majestic spiral with four long arms of gas, dust, and approximately 300 billion stars. Our solar system sits on one of these arms, tucked away in a quiet corner. Stars orbit at breakneck speeds, and one of the fastest-moving known stars, S2, reaches an astonishing 11 million miles per hour. The answer lies at the heart of our galaxy—a supermassive black hole known as Sagittarius A*. This cosmic giant, with a mass four million times that of our Sun, holds an immense gravitational grip over its surroundings.
 
-Dark matter and energy
-In 1929, astronomer Edwin Hubble made a groundbreaking discovery while studying distant galaxies. He observed that almost every galaxy was moving away from Earth. This phenomenon can be understood using a concept similar to the Doppler effect, which we commonly experience with sound. The Hubble Space Telescope, which orbits Earth, uses this principle to analyze the light from distant objects. By measuring redshift, astronomers have determined not only that the universe is expanding, but also that our neighboring galaxy, Andromeda, is on a collision course with the Milky Way.
+Dark Matter and Energy
+In the 1930s, Dutch astronomer Jan Oort made another startling discovery. He studied the velocity of stars in the Milky Way and found that they were moving faster than expected based on the visible matter present. According to Newton’s laws, an object moving at high speeds should eventually break free from gravitational pull. However, the stars remained in orbit, suggesting that an unknown force was acting upon them. Oort estimated the total mass of the Milky Way and found that visible matter alone was insufficient to explain the galaxy's rotation. This led him to propose the existence of an invisible, mysterious substance—which we now call dark matter.
 
-Quantum mechanics
+Quantum Mechanics
 Quantum mechanics introduces concepts that defy our intuitive understanding of reality. One such phenomenon is wave-particle duality, where fundamental particles behave both as discrete particles and as waves. Einstein dismissed this idea as “spooky action at a distance,” but experiments have since confirmed that quantum entanglement is real. If multiple quantum possibilities exist, could they all be realized in different branches of the universe? Physicist Hugh Everett proposed the Many-Worlds Interpretation, which suggests that every quantum event splits reality into parallel histories.
 
-Global warming
+Global Warming
 Life began about 3 billion years ago with bacteria, followed by the evolution of cells and plants, which gradually altered Earth's atmosphere. Greenhouse gases formed a protective layer, trapping heat and maintaining a stable climate. The Agricultural and Industrial Revolutions allowed humanity to shift focus from survival to technological and scientific advancements. This progress improved healthcare, reduced mortality rates, and increased prosperity. But it also led to overpopulation and a higher carbon footprint.
 
 Genetics
 Two billion years ago, Earth was teeming with cells, simple bacterial cells and from this vast ocean of microbes, arose a single, complex cell with an intricate internal structure. From this celestial cell, came all life on Earth. How or why, this happened remains a mystery—one that nature has never repeated. Scientists have long sought to unravel this mystery, attempting to recreate Earth's early atmosphere. By combining chemicals, gases, and electric sparks, they have only managed to produce simple organic molecules, but no life.
 
-The human genome project
+The Human Genome Project
 The Human Genome Project, initiated in 1990 and completed in 2003, unraveled the sequence of nearly three billion base pairs in human DNA. It has been an amazing journey for science considering the many limitations that scientists are bound by because of ethics involving human life. A wrong mutation could create havoc and possibly destroy life on earth. We now go on a journey to understand how we were able to decode the gene as a unit of heredity. The word code has its origins in the Latin word caudex, or the sheets of material made from the pith of trees which were used for writing.
 
 The Origin of Species
